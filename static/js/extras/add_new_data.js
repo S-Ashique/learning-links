@@ -36,6 +36,7 @@ export function changePicture(
         .on("click", function () {
           $container.find("img").remove();
           $(this).remove();
+          event.target.value=''
           $selectPhoto.find("span").text(defaultText);
         });
 
@@ -68,7 +69,9 @@ export function addNewSchoolData(school, school_picture) {
           <span>${school.place || "unknown place"}</span>
         </p>
       </div>
-      <a href="/schools/${school.id}" class="absolute inset-0 z-10"></a>`;
+      <a href="/super-user/school/${
+        school.id
+      }" class="absolute inset-0 z-10"></a>`;
 
   if (school_picture) {
     schoolCard += `

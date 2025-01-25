@@ -17,7 +17,7 @@ def redirect_authenticated_user(view_func):
             messages.info(
                 request, 'you\'ve already finished your authentication')
             if request.user.is_superuser:
-                return redirect('/superuser/')
+                return redirect('/super-user/')
             else:
                 return redirect('/')
         return view_func(request, *args, **kwargs)
