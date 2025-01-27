@@ -1,9 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import user_passes_test
-from user.utils import check_is_user
 from school.utils import update_or_create_school
 from school.models import School, SchoolPermission
+from django.contrib.auth.decorators import user_passes_test
+from user.utils import check_is_user
 from llfadmin.utlis import check_is_superuser, make_paginator
 from django.conf import settings
 from django.http import JsonResponse
@@ -66,7 +66,7 @@ def UserGetSchool(request, id):
         if not school:
             messages.error(
                 request, 'you dont have the permission to access this school')
-            return redirect('/')
+            return redirect('user-all-schools')
         return render(request, 'pages/user/school.html', {'school': school})
     
     if request.method == 'POST':

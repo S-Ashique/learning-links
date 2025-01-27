@@ -6,10 +6,16 @@
 <!-- block content -->
 {% block content %}
 
+<!-- student -->
+ {% include 'pages/student/student.html' %}
+ <!-- update students -->
+{% include 'pages/student/add_or_update_student.html' %}
+
 {% endblock content %}
 
 
 <!-- block script -->
 {% block script %}
+<script type="module" src="{% static 'js/add_or_update_student.js' %}"></script>
 
 {% endblock script %}

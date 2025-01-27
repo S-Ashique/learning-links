@@ -36,7 +36,7 @@ export function changePicture(
         .on("click", function () {
           $container.find("img").remove();
           $(this).remove();
-          event.target.value=''
+          event.target.value = "";
           $selectPhoto.find("span").text(defaultText);
         });
 
@@ -109,9 +109,11 @@ export function addNewSchoolData(school, school_picture) {
   $addedSchool.prepend(schoolCard);
 }
 
-export function addNewStudentData(student, student_picture, redirect_to) {
+export function addNewStudentData(student, student_picture, url) {
   var $addedStudent = $("#students");
-
+  const redirect_to = `${url}${student.id}/`;
+  console.log(redirect_to);
+  console.log(student);
   if ($addedStudent.length === 0) {
     $("#empty_student").remove();
     $addedStudent = $("<div>", {
@@ -158,4 +160,3 @@ export function addNewStudentData(student, student_picture, redirect_to) {
 
   $addedStudent.prepend(studentCard);
 }
-

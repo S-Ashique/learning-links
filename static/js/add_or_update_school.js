@@ -36,15 +36,10 @@ $(document).ready(() => {
   let adminSchoolId = currentUrl.split("/")[3];
   let userSchoolId = currentUrl.split("/")[2];
 
-  let adminUpdate = false;
-  let adminCreate = false;
-  let userUpdate = false;
-
   let changeText = "Updat";
   let url = "";
 
   if (newSchool && currentUrl === "/super-user/schools/") {
-    adminCreate = true;
     changeText = "Sav";
     url = "/super-user/schools/";
   } else if (
@@ -52,10 +47,8 @@ $(document).ready(() => {
     currentUrl.startsWith("/super-user/school/") &&
     adminSchoolId === schoolId
   ) {
-    adminUpdate = true;
     url = `/super-user/school/${schoolId}/`;
   } else if (update && userSchoolId === schoolId) {
-    userUpdate = true;
     url = `/school/${userSchoolId}/`;
   }
 
@@ -150,15 +143,15 @@ $(document).ready(() => {
         contentType: false,
         success: async ({ school }) => {
           if (school) {
-            if (adminCreate) {
+            if (newSchool) {
               await addNewSchoolData(school, $schoolPicture[0].files[0]);
               resetForm();
-            } else if (adminUpdate || userUpdate) {
+            } else if (update) {
               toaster("Update successfull", "success");
               $("#school_name").text(school.name);
               $("#school_location").text(school.place);
               $("#school_description").text(school.description);
-              $("#school_updated_at").text("today");
+              $("#school_updated_at").text("Now");
               $("#school_updated_by").text("You");
 
               if ($schoolPicture[0].files[0]) {
