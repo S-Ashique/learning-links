@@ -1086,6 +1086,10 @@ video {
   height: 20rem;
 }
 
+.h-9 {
+  height: 2.25rem;
+}
+
 .h-svh {
   height: 100svh;
 }
@@ -1104,6 +1108,10 @@ video {
 
 .w-44 {
   width: 11rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .w-9\/12 {
@@ -1137,6 +1145,10 @@ video {
 
 .max-w-xl {
   max-width: 36rem;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -1233,6 +1245,10 @@ video {
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
+.justify-self-end {
+  justify-self: end;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1316,6 +1332,10 @@ video {
   background-color: rgb(214 211 209 / var(--tw-bg-opacity, 1));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1363,9 +1383,19 @@ video {
   padding-right: 0.5rem;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .py-1 {
@@ -1507,6 +1537,16 @@ video {
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.placeholder-stone-800::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(41 37 36 / var(--tw-placeholder-opacity, 1));
+}
+
+.placeholder-stone-800::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(41 37 36 / var(--tw-placeholder-opacity, 1));
 }
 
 .shadow-lg {

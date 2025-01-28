@@ -17,8 +17,14 @@ def AdminAllStudents(request, id):
     school = School.objects.filter(id=id).first()
     if request.method == 'GET':
         if school:
-            students = Student.objects.filter(
-                school=school).values('dob', 'emis', 'gender', 'id', 'name', 'school',  'student_picture',)
+            class_name = request.GET.get('class_name')
+            year = request.GET.get('year')
+            if class_name and year:
+                students = Student.objects.filter(
+                    school=school, studentclass__class_name=class_name, studentclass__year=year,).values('dob', 'emis', 'gender', 'id', 'name', 'school',  'student_picture',)
+            else:
+                students = Student.objects.filter(
+                    school=school).values('dob', 'emis', 'gender', 'id', 'name', 'school',  'student_picture',)
             media_url = settings.MEDIA_URL
             page_obj = make_paginator(request, students, 12)
             return render(request, 'pages/admin/students.html', {'page': page_obj,  'media_url': media_url})
@@ -88,8 +94,16 @@ def UserAllStudents(request, id):
 
     if request.method == 'GET':
         if school:
-            students = Student.objects.filter(
-                school=school).values('dob', 'emis', 'gender', 'id', 'name', 'school',  'student_picture',)
+            class_name = request.GET.get('class_name')
+            year = request.GET.get('year')
+            if class_name and year:
+                students = Student.objects.filter(
+                    school=school, studentclass__class_name=class_name, studentclass__year=year,).values('dob', 'emis', 'gender', 'id', 'name', 'school',  'student_picture',)
+
+            else:
+
+                students = Student.objects.filter(
+                    school=school).values('dob', 'emis', 'gender', 'id', 'name', 'school',  'student_picture',)
             media_url = settings.MEDIA_URL
             page_obj = make_paginator(request, students, 12)
             return render(request, 'pages/user/students.html', {'page': page_obj,  'media_url': media_url, 'id': id})

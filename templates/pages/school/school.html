@@ -47,7 +47,7 @@
         <circle cx="12" cy="7" r="4" />
       </svg>
 
-      View students</a
+      View all students</a
     >
     
   </div>
@@ -57,11 +57,18 @@
   </h1>
 </div>
 
-<div class="mb-4">
+<div class="mb-6">
   <p >last updated : <span id="school_updated_at"> {{school.updated_at|date:"b d, Y" }} </span></p>
   <p >changes made by : <span id="school_updated_by"> {% if request.user.username == school.updated_by.username %} you {% else %} {% if request.user.is_superuser %}{{school.updated_by}} {% else %} {{school.updated_by.username}} {% endif %} {% endif %} </span></p>
 </div>
 
+<div class="w-64 relative border border-stone-300 shadow-md mb-6 px-5 py-3 rounded-full flex flex-col items-center justify-self-end">
+  <form  action=" {% if request.user.is_superuser %} {% url 'admin-all-students' school.id %}  {% else %} {% url 'user-all-students' school.id %} {% endif %}" method="get" class=" flex gap-2">
+    <input placeholder="class" type="number" name="class_name" id="class_name" autofocus class="h-9 bg-transparent w-full px-3 py-1 placeholder-stone-800" required>
+    <input placeholder="batch" type="number" name="year" id="year" class="h-9 bg-transparent w-full px-3 py-1 placeholder-stone-800" required>
+    <button type="submit" class="btn btn-destructive size-8 rounded-full shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+  </form>
+</div>
 <div
 id="school_data"
   class="h-svh rounded-lg overflow-hidden shadow-lg border border-stone-300 relative"
