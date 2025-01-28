@@ -86,4 +86,5 @@ class StudentClassReport(models.Model):
         verbose_name_plural = "Reports"
 
     def __str__(self):
-        return f'{self.student.id} {self.student.name} class {self.student_class.class_name}'
+        class_name = self.student_class.class_name if self.student_class else 'N/A'
+        return f'{self.student.id} {self.student.name} class {class_name}'

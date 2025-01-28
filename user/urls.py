@@ -11,6 +11,7 @@ urlpatterns = [
     path('school/<int:school_id>/student/<int:id>/',
          UserGetStudent, name='user-get-student'),
 
-    path('reports/<int:id>/',NewReport,name='new-report'),
+    path('reports/<int:id>/', NewReport, name='new-report'),
+    path('upgrade-class/<int:id>/', upgradeClass, name='upgrade-class'),
 
 ]
