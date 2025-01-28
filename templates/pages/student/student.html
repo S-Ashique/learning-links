@@ -26,7 +26,12 @@
   >
     <p>Name <span id="student_name">{{student.name}} </span></p>
     <p>Class <span id="student_class">{{latest_class.class_name}} </span></p>
-    <p>Batch <span id="student_year">{{ latest_class.year }}-{{ latest_class.year|add:1}}</span></p>
+    <p>
+      Batch
+      <span id="student_year"
+        >{{ latest_class.year }}-{{ latest_class.year|add:1}}</span
+      >
+    </p>
 
     <p>EMIS ID <span id="student_emis">{{student.emis}}</span></p>
 
@@ -59,7 +64,7 @@
   {% if not latest_class.class_name == '12' %}
   <button type="button" class="btn btn-default btn-size">Upgrade class</button>
   {% endif %}
-  <button type="button" class="btn btn-default btn-size">Add new report</button>
+  <button type="button" id="report_modal_open" class="btn btn-default btn-size">Add new report</button>
 </div>
 <!-- classes -->
 <div class="flex justify-center items-center flex-wrap gap-3 mb-10">
@@ -91,7 +96,7 @@
 
 <!-- reports -->
 {% if reports %}
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-5">
+<div id="report_data" class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-5">
   {% for j in reports %}
   <div
     class="info px-2 py-3 rounded-lg relative [&_span]:ps-2 [&_p]:uppercase [&_span]:text-base [&_span]:text-stone-950 [&_span]:font-medium"
@@ -107,12 +112,7 @@
     <p class="mb-2">Literacy Level<span>{{j.literacylevel}}</span></p>
     <p class="mb-3">
       Notes
-      <span
-        >{{j.description}} Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Suscipit beatae blanditiis velit mollitia iure commodi, laboriosam
-        eos ut! Omnis sunt quod tempore sequi autem obcaecati eum excepturi
-        repudiandae neque consectetur.</span
-      >
+      <span>{{j.description}} </span>
     </p>
 
     <p class="text-end">
@@ -126,5 +126,5 @@
 </div>
 {% else %}
 
-<h2 class="uppercase text-center text-3xl tracking-tight">No reports yet</h2>
+<h2 id="no_report" class="uppercase text-center text-3xl tracking-tight">No reports yet</h2>
 {% endif %}
